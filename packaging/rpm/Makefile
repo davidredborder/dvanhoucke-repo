@@ -10,6 +10,10 @@ MOCK_CONFIG?=default
 
 RESULT_DIR?=pkgs
 
+REPO_URL?=packages.redborder.com
+
+USER_REPO_URL?=packages.redborder.com
+
 all: rpm
 
 
@@ -33,6 +37,8 @@ srpm: build_prepare
 		--define "__version $(VERSION)" \
 		--define "__release $(BUILD_NUMBER)" \
 		--define "__username $(USERNAME)" \
+		--define "__repo_url $(REPO_URL)" \
+		--define "__user_repo_url $(USER_REPO_URL)" \
 		--resultdir=$(RESULT_DIR) \
 		--buildsrpm \
 		--spec=username-repo.spec \
@@ -45,6 +51,8 @@ rpm: srpm
 		--define "__version $(VERSION)"\
 		--define "__release $(BUILD_NUMBER)"\
 		--define "__username $(USERNAME)" \
+		--define "__repo_url $(REPO_URL)" \
+		--define "__user_repo_url $(USER_REPO_URL)" \
 		--resultdir=$(RESULT_DIR) \
 		--rebuild $(RESULT_DIR)/$(PACKAGE_NAME)*.src.rpm
 	@echo "======= Binary RPMs now available in $(RESULT_DIR) ======="
