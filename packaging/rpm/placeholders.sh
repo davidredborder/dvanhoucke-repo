@@ -4,7 +4,7 @@
 files=("resources/username.repo")
 
 f_usage() {
-  echo "usage: $0 -u USERNAME -v VERSION -b BUILDNUMBER -r REPO_URL -l USER_REPO_URL"
+  echo "usage: $0 -u USERNAME -v VERSION -b BUILDNUMBER -r REPO_URL -l USER_REPO_URL -p PRODUCT_VERSION"
   exit 0
 }
 
@@ -19,6 +19,8 @@ while getopts "hu:v:b:r:l:" opt; do
       r) repo_url="$OPTARG"
           ;;
       l) user_repo_url="$OPTARG"
+          ;;
+      p) product_version="$OPTARG"
           ;;
       *) f_usage
           ;;
@@ -35,4 +37,5 @@ for file in "${files[@]}"; do
     sed -i "s|{{REPO_URL}}|$repo_url|g" $file
     sed -i "s|{{USER_REPO_URL}}|$user_repo_url|g" $file
     sed -i "s|{{BUILDNUMBER}}|$buildnumber|g" $file
+    sed -i "s|{{PRODUCT_VERSION}}|$product_version|g" $file
 done

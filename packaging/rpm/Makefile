@@ -14,6 +14,8 @@ REPO_URL?=packages.redborder.com
 
 USER_REPO_URL?=packages.redborder.com
 
+PRODUCT_VERSION?=latest
+
 all: rpm
 
 
@@ -39,6 +41,7 @@ srpm: build_prepare
 		--define "__username $(USERNAME)" \
 		--define "__repo_url $(REPO_URL)" \
 		--define "__user_repo_url $(USER_REPO_URL)" \
+		--define "__product_version $(PRODUCT_VERSION)" \
 		--resultdir=$(RESULT_DIR) \
 		--buildsrpm \
 		--spec=username-repo.spec \
@@ -53,6 +56,7 @@ rpm: srpm
 		--define "__username $(USERNAME)" \
 		--define "__repo_url $(REPO_URL)" \
 		--define "__user_repo_url $(USER_REPO_URL)" \
+		--define "__product_version $(PRODUCT_VERSION)" \
 		--resultdir=$(RESULT_DIR) \
 		--rebuild $(RESULT_DIR)/$(PACKAGE_NAME)*.src.rpm
 	@echo "======= Binary RPMs now available in $(RESULT_DIR) ======="
