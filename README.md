@@ -19,5 +19,5 @@ VERSION=1.0.0 REPO_URL="http://packages.redborder.com" make rpm
 
 Build with different USER URL:
 ```
-VERSION=1.0.0 USER REPO_URL="http://packages-sc.redborder.lan" make rpm
+VERSION=1.0.0 USER=dvanhoucke USER_REPO_URL="http://packages-sc.redborder.lan" make rpm
 ```
