@@ -30,9 +30,9 @@ if [ -z "$username" ] || [ -z "$version" ] || [ -z "$buildnumber" ] || [ -z "$re
 fi
 
 for file in "${files[@]}"; do
-    sed -i "s/{{USERNAME}}/$username/g" $file
-    sed -i "s/{{VERSION}}/$version/g" $file
-    sed -i "s/{{REPO_URL}}/$repo_url/g" $file
-    sed -i "s/{{USER_REPO_URL}}/$user_repo_url/g" $file
-    sed -i "s/{{BUILDNUMBER}}/$buildnumber/g" $file
+    sed -i "s|{{USERNAME}}|$username|g" $file
+    sed -i "s|{{VERSION}}|$version|g" $file
+    sed -i "s|{{REPO_URL}}|$repo_url|g" $file
+    sed -i "s|{{USER_REPO_URL}}|$user_repo_url|g" $file
+    sed -i "s|{{BUILDNUMBER}}|$buildnumber|g" $file
 done
