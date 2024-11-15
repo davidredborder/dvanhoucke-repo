@@ -1,0 +1,21 @@
+[{{USERNAME}}-devel]
+name={{USERNAME}} repository devel
+baseurl={{USER_REPO_URL}}/devel/{{USERNAME}}/rhel/9/x86_64/
+gpgcheck=0
+enabled=1
+sslcheck=0
+
+[{{USERNAME}}-devel-source]
+name={{USERNAME}} repository devel
+baseurl={{USER_REPO_URL}}/ng/devel/{{USERNAME}}/rhel/9/SRPMS/
+gpgcheck=0
+enabled=0
+sslcheck=0
+
+[redborder-{{PRODUCT_VERSION}}]
+name=Redborder Official Repository - $basearch
+baseurl={{REPO_URL}}/ng/{{PRODUCT_VERSION}}/rhel/9/$basearch/
+enabled=1
+gpgcheck=0
+sslcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redborder-repo

@@ -1,12 +1,20 @@
-PACKAGE_NAME?=	dvanhoucke-repo
+USERNAME?=%{expand:whoami}
 
-VERSION?=	$(shell git describe --abbrev=6 --tags HEAD --always | sed 's/-/_/g')
+PACKAGE_NAME?=$(USERNAME)-repo
 
-BUILD_NUMBER?= 1
+VERSION?=$(shell git describe --abbrev=6 --tags HEAD --always | sed 's/-/_/g')
+
+BUILD_NUMBER?=1
 
 MOCK_CONFIG?=default
 
 RESULT_DIR?=pkgs
+
+REPO_URL?=packages.redborder.com
+
+USER_REPO_URL?=packages.redborder.com
+
+PRODUCT_VERSION?=latest
 
 all: rpm
 
@@ -30,9 +38,13 @@ srpm: build_prepare
 		-r $(MOCK_CONFIG) \
 		--define "__version $(VERSION)" \
 		--define "__release $(BUILD_NUMBER)" \
+		--define "__username $(USERNAME)" \
+		--define "__repo_url $(REPO_URL)" \
+		--define "__user_repo_url $(USER_REPO_URL)" \
+		--define "__product_version $(PRODUCT_VERSION)" \
 		--resultdir=$(RESULT_DIR) \
 		--buildsrpm \
-		--spec=${PACKAGE_NAME}.spec \
+		--spec=username-repo.spec \
 		--sources=SOURCES
 	@echo "======= Source RPM now available in $(RESULT_DIR) ======="
 
@@ -41,6 +53,10 @@ rpm: srpm
 		-r $(MOCK_CONFIG) \
 		--define "__version $(VERSION)"\
 		--define "__release $(BUILD_NUMBER)"\
+		--define "__username $(USERNAME)" \
+		--define "__repo_url $(REPO_URL)" \
+		--define "__user_repo_url $(USER_REPO_URL)" \
+		--define "__product_version $(PRODUCT_VERSION)" \
 		--resultdir=$(RESULT_DIR) \
 		--rebuild $(RESULT_DIR)/$(PACKAGE_NAME)*.src.rpm
 	@echo "======= Binary RPMs now available in $(RESULT_DIR) ======="
