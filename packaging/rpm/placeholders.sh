@@ -8,7 +8,7 @@ f_usage() {
   exit 0
 }
 
-while getopts "hu:v:b:r:l:" opt; do
+while getopts "hu:v:b:r:l:p:" opt; do
   case $opt in
       u) username="$OPTARG"
           ;;
