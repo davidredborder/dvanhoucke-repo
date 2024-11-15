@@ -10,7 +10,7 @@ MOCK_CONFIG?=default
 
 RESULT_DIR?=pkgs
 
-REPO_URL?=packages.redborder.com
+REPO_URL?=https://packages.redborder.com
 
 USER_REPO_URL?=packages.redborder.com
 
