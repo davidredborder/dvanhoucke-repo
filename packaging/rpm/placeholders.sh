@@ -27,7 +27,7 @@ while getopts "hu:v:b:r:l:" opt; do
   esac
 done
 
-if [ -z "$username" ] || [ -z "$version" ] || [ -z "$buildnumber" ] || [ -z "$repo_url" ] || [ -z "$user_repo_url" ]; then
+if [ -z "$username" ] || [ -z "$version" ] || [ -z "$buildnumber" ] || [ -z "$repo_url" ] || [ -z "$user_repo_url" || [ -z "$product_version" ]; then
     f_usage
 fi
 

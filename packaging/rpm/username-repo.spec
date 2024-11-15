@@ -17,7 +17,7 @@ This package contains user devel rhel9 packages for redborder repository as well
 %setup -qn %{name}-%{version}
 
 %build
-packaging/rpm/placeholders.sh -u %{__username} -v %{__version} -b %{__release} -r %{__repo_url} -l %{__user_repo_url}
+packaging/rpm/placeholders.sh -u %{__username} -v %{__version} -b %{__release} -r %{__repo_url} -l %{__user_repo_url} -p %{__product_version}
 
 %install
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
